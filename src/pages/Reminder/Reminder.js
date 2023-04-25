@@ -25,6 +25,8 @@ export default function Reminder() {
   };
 
   const fetchReminder = async () => {
+    console.log("Initial value of checked");
+    console.log(checked);
     await getDocs(collection(db, `${currentUser.email}`)).then(
       (querySnapshot) => {
         const newData = querySnapshot.docs.map((doc) => ({
@@ -32,42 +34,66 @@ export default function Reminder() {
           id: doc.id,
         }));
         setReminder(newData);
-        console.log(reminder, newData);
+        //console.log(reminder, newData);
       }
     );
 
-    //const checkArr = new Array(reminder.length);
+    /* const checkArr = new Array(reminder.length);
+    console.log(reminder);
 
-    reminder.map((rem, id) => {
-      checkArr[id] = rem.Status;
+    reminder.map((rem, index) => {
+      
+
+      checkArr[index] = rem.Status;
     });
-    isChecked(checkArr);
+
+    console.log("Value of Check Arr");
+    console.log(checkArr);
+    isChecked(checkArr); */
     //const [checked, isChecked] = useState(checkArr);
+    //console.log(checked);
+  };
+
+  const fetchStatus = () => {
+    //console.log(reminder);
+    const checkArr = new Array(reminder.length);
+    //console.log(checkArr.length);
+    reminder.map((rem, index) => {
+      checkArr[index] = rem.Status;
+    });
+    console.log(checkArr);
+    isChecked(checkArr);
     console.log(checked);
   };
+
   useEffect(() => {
     fetchReminder();
   }, []);
+  useEffect(() => {
+    fetchStatus();
+  }, [reminder]);
 
-  const checkArr = new Array(reminder.length);
+  /* const checkArr = new Array(reminder.length);
 
   reminder.map((rem, id) => {
     checkArr[id] = rem.Status;
   });
   isChecked(checkArr);
-  //const [checked, isChecked] = useState(checkArr);
-  console.log(checked);
-  const handleCheckedChange = async (id, ind) => {
+  const [checked, isChecked] = useState(checkArr);
+  console.log(checked); */
+
+  const checkHandler = async (id, position) => {
+    console.log("Check id" + id);
+
+    const updatedCheckedState = checked.map((item, index) => {
+      return index === position ? !item : item;
+    });
+
+    isChecked(updatedCheckedState);
+
     await updateDoc(doc(db, `${currentUser.email}`, id), {
       Status: checked,
     });
-
-    console.log("Check id" + id);
-    /* const updatedCheckedState = checked.map((item, index) => {
-      index === ind ? !item : item;
-    }); 
-
-    isChecked(updatedCheckedState);*/
   };
 
   const delReminder = async (id) => {
@@ -82,20 +108,20 @@ export default function Reminder() {
       {modal && <AddReminder onConfirm={modalHandler} />}
       <h2> This is the Reminder Page</h2>
       <div className="display-reminder">
-        {reminder.map((rem, id) => (
+        {reminder.map((rem, index) => (
           <>
             <p>{rem.id}</p>
-            <p key={id}>{rem.Name}</p>
+            <p key={index}>{rem.Name}</p>
             <p>{rem.Date} </p>
             <p>{rem.Status}</p>
             <p>{rem.Time} </p>
-            <input
-              id={id}
+            <input // Updating Tasks
+              id={index}
               className="checkbox-custom"
               name="checkbox"
-              checked={checked[id]}
+              checked={checked[index]}
               onChange={() => {
-                handleCheckedChange(rem.id, id);
+                checkHandler(rem.id, index);
               }}
               type="checkbox"
             />
