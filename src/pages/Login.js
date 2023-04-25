@@ -1,31 +1,16 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
-//import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "../UI/Modal/Modal";
-
-import { auth } from "../firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
-  sendPasswordResetEmail,
-} from "firebase/auth";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  //const { login } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

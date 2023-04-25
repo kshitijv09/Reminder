@@ -3,6 +3,8 @@ import Home from "./pages/Home/Home";
 import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import Reminder from "./pages/Reminder/Reminder";
+
+import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 
 function App() {
@@ -12,7 +14,11 @@ function App() {
     { path: "/login", element: <Login /> },
     { path: "/dashboard", element: <Reminder /> },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
 export default App;

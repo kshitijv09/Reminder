@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "../UI/Modal/Modal";
 
-import { auth } from "../firebase";
+/* import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -12,20 +13,20 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
-} from "firebase/auth";
+} from "firebase/auth"; */
 
 export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  //const { signup } = useAuth();
+  const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  function signup(email, password) {
+  /* function signup(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
-  }
+  } */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
