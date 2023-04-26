@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddReminder from "../../components/AddReminder/AddReminder";
-
+import Nav from "../../components/Nav/Nav";
+import "./Reminder.css";
 import {
   collection,
   getDocs,
@@ -103,40 +104,61 @@ export default function Reminder() {
 
   return (
     <div>
-      {/* {console.log(modal)} */}
-      <h3> Welcome, {currentUser.email}</h3>
+      <Nav name={currentUser.email} />
       {modal && <AddReminder onConfirm={modalHandler} />}
-      <h2> This is the Reminder Page</h2>
-      <div className="display-reminder">
-        {reminder.map((rem, index) => (
-          <>
-            <p>{rem.id}</p>
-            <p key={index}>{rem.Name}</p>
-            <p>{rem.Date} </p>
-            <p>{rem.Status}</p>
-            <p>{rem.Time} </p>
-            <input // Updating Tasks
-              id={index}
-              className="checkbox-custom"
-              name="checkbox"
-              checked={checked[index]}
-              onChange={() => {
-                checkHandler(rem.id, index);
-              }}
-              type="checkbox"
-            />
+      <div className="rem-container">
+        <div className="rem-heading">
+          <div style={{ width: "20%" }} className="rem-head">
+            Reminder
+          </div>
+          <div style={{ width: "20%" }} className="rem-head">
+            Date
+          </div>
+          <div style={{ width: " 20%" }} className="rem-head">
+            Time
+          </div>
+          <div style={{ width: " 10%" }} className="rem-head">
+            Status
+          </div>
+          <div style={{ width: "10%" }} className="rem-head">
+            Delete
+          </div>
+        </div>
+        <div className="display-reminder">
+          {reminder.map((rem, index) => (
+            <div className="rem-card">
+              {/* <p>{rem.id}</p> */}
+              <div key={index} style={{ width: "20%" }}>
+                {rem.Name}
+              </div>
+              <div style={{ width: "20%" }}>{rem.Date} </div>
 
-            <button
-              onClick={() => {
-                delReminder(rem.id);
-              }}
-            >
-              Delete
-            </button>
-          </>
-        ))}
+              <div style={{ width: "20%" }}>{rem.Time} </div>
+              <input // Updating Tasks
+                id={index}
+                className="checkbox-custom"
+                name="checkbox"
+                checked={checked[index]}
+                onChange={() => {
+                  checkHandler(rem.id, index);
+                }}
+                type="checkbox"
+                style={{ width: "5%" }}
+              />
+
+              <button
+                onClick={() => {
+                  delReminder(rem.id);
+                }}
+                style={{ width: "10%" }}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
+        <button onClick={modalHandler}> Add a Reminder</button>
       </div>
-      <button onClick={modalHandler}> Add a Reminder</button>
     </div>
   );
 }

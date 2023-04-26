@@ -1,0 +1,33 @@
+.nav-bar {
+  color: white;
+  border: pink solid 6px;
+  width: 100%;
+  margin: auto;
+
+  background-color: black;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: row;
+}
+.text-container {
+  width: 90%;
+  margin: 1.2rem auto;
+  /* border: green solid 3px; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.text {
+  color: white;
+  font-size: 1.3em;
+  margin-top: 1.2rem;
+}
+.logout-container {
+  font-size: 2em;
+  width: 10%;
+  /* border: pink solid 2px; */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

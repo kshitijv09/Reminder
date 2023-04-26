@@ -23,7 +23,7 @@ const Landing = () => {
         Has this caused you to lose a lot of opportunites recently?
       </h1>
       <h1 className="third-heading">
-        This Reminder App is the solution to all your problems. Sign Up to fiind
+        This Reminder App is the solution to all your problems. Sign Up to find
         out how
       </h1>
       <div className="fourth-heading">

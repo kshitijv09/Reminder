@@ -2,10 +2,12 @@
 
 .heading {
   font-size: 4em;
+  margin-bottom: 4rem;
+  font-family: "Satisfy", cursive;
 }
 .primary-heading--container {
   border: 8px solid #c8f2f2;
-  height: 93vh;
+  height: 98vh;
   width: 100% !important;
   display: flex;
   flex-direction: column;
