@@ -102,16 +102,6 @@
 }
 
 @keyframes text4 {
-  /* 0% {
-    transform: translateY(-3000px);
-  }
-  20% {
-    transform: translateY(50px);
-  }
-  30% {
-    transform: translateY(-160px);
-  } */
-
   100% {
     transform: translateY(-5px);
   }

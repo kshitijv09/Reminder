@@ -5,14 +5,14 @@
   margin: auto;
 
   background-color: black;
-  /* text-align: center; */
+
   display: flex;
   flex-direction: row;
 }
 .text-container {
   width: 90%;
   margin: 1.2rem auto;
-  /* border: green solid 3px; */
+
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -25,9 +25,25 @@
 .logout-container {
   font-size: 2em;
   width: 10%;
-  /* border: pink solid 2px; */
+
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 500px) {
+  .text {
+    font-size: 5vw;
+  }
+  .nav-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logout-container {
+    font-size: 4vw;
+    display: flex;
+    justify-content: center;
+  }
 }

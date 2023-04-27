@@ -38,21 +38,6 @@ export default function Reminder() {
         //console.log(reminder, newData);
       }
     );
-
-    /* const checkArr = new Array(reminder.length);
-    console.log(reminder);
-
-    reminder.map((rem, index) => {
-      
-
-      checkArr[index] = rem.Status;
-    });
-
-    console.log("Value of Check Arr");
-    console.log(checkArr);
-    isChecked(checkArr); */
-    //const [checked, isChecked] = useState(checkArr);
-    //console.log(checked);
   };
 
   const fetchStatus = () => {
@@ -73,15 +58,6 @@ export default function Reminder() {
   useEffect(() => {
     fetchStatus();
   }, [reminder]);
-
-  /* const checkArr = new Array(reminder.length);
-
-  reminder.map((rem, id) => {
-    checkArr[id] = rem.Status;
-  });
-  isChecked(checkArr);
-  const [checked, isChecked] = useState(checkArr);
-  console.log(checked); */
 
   const checkHandler = async (id, position) => {
     console.log("Check id" + id);
@@ -117,10 +93,10 @@ export default function Reminder() {
           <div style={{ width: " 20%" }} className="rem-head">
             Time
           </div>
-          <div style={{ width: " 10%" }} className="rem-head">
+          <div style={{ width: " 10%" }} className="rem-head status">
             Status
           </div>
-          <div style={{ width: "10%" }} className="rem-head">
+          <div style={{ width: "10%" }} className="rem-head delete">
             Delete
           </div>
         </div>
@@ -150,14 +126,18 @@ export default function Reminder() {
                 onClick={() => {
                   delReminder(rem.id);
                 }}
-                style={{ width: "10%" }}
+                className="del-btn"
               >
                 Delete
               </button>
             </div>
           ))}
         </div>
-        <button onClick={modalHandler}> Add a Reminder</button>
+        <div className="add-rem">
+          <button onClick={modalHandler} className="rem-btn">
+            Add Reminder
+          </button>
+        </div>
       </div>
     </div>
   );

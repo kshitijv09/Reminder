@@ -7,7 +7,6 @@ const Landing = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log("This will run after 7 second!");
       setShowAnimation(true);
     }, 8000);
     return () => clearTimeout(timer);
@@ -34,7 +33,6 @@ const Landing = () => {
           <div>Log In </div>
         </Link>
       </div>
-      {/* {showAnimation ? <Animation /> : null} */}
     </div>
   );
 };

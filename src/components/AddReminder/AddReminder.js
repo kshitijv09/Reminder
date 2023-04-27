@@ -14,24 +14,15 @@ export default function AddReminder(props) {
   const dateRef = useRef();
   const timeRef = useRef();
 
-  /* function closeModal() {
-    console.log(nameRef.current.value);
+  const dataStoreHandler = async () => {
     props.onConfirm();
-  } */
-
-  const dataStoreHandler = async (TrainData) => {
-    //event.preventDefault();
-    props.onConfirm();
-
     try {
-      //console.log(currentUser.email);
       const docRef = await addDoc(collection(db, `${currentUser.email}`), {
         Name: nameRef.current.value,
         Date: dateRef.current.value,
         Time: timeRef.current.value,
         Status: false,
       });
-      //console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -53,7 +44,7 @@ export default function AddReminder(props) {
             <Form.Label>Time</Form.Label>
             <Form.Control type="text" ref={timeRef} required />
           </Form.Group>
-          <Button /* disabled={loading} */ className="w-100" type="submit">
+          <Button className="w-100" type="submit">
             Set Reminder
           </Button>
         </Form>
